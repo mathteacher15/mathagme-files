@@ -1,0 +1,51 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+#question-container {
+    margin: 20px;
+}
+
+input, button {
+    padding: 10px;
+    font-size: 16px;
+    margin: 10px;
+}
+
+#stats {
+    margin: 20px;
+    font-size: 18px;
+}
+
+button {
+    cursor: pointer;
+}
+
+#timer {
+    font-size: 18px;
+    font-weight: bold;
+    color: #f00;
+}
+
+/* Correct message style */
+.correct-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px 20px;
+    font-size: 24px;
+    background-color: green;
+    color: white;
+    border-radius: 5px;
+    opacity: 1;
+    animation: fadeOut 1s forwards; /* Fades out after 1 second */
+}
+
+/* Animation for fading out */
+@keyframes fadeOut {
+    100% {
+        opacity: 0;
+    }
+}
