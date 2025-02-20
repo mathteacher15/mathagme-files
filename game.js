@@ -34,6 +34,11 @@ function generateQuestion() {
     document.getElementById('question').textContent = `${num1} x ${num2}`;
     document.getElementById('answer').value = '';  // Clear previous answer
     document.getElementById('answer').focus();  // Focus the input field
+
+    // Enable the submit button when the user starts typing
+    document.getElementById('submit-answer').disabled = false;
+
+    // Disable the submit button until an answer is entered
     document.getElementById('submit-answer').onclick = () => checkAnswer(num1, num2);
     document.getElementById('answer').onkeydown = (e) => {
         if (e.key === 'Enter') {
@@ -45,6 +50,13 @@ function generateQuestion() {
 // Check if the answer is correct
 function checkAnswer(num1, num2) {
     let userAnswer = parseInt(document.getElementById('answer').value);
+
+    // If the answer is not a number or is empty, don't do anything
+    if (isNaN(userAnswer)) {
+        alert("Please enter a valid number!");
+        return;
+    }
+
     let correctAnswer = num1 * num2;
 
     if (userAnswer === correctAnswer) {
@@ -60,7 +72,8 @@ function checkAnswer(num1, num2) {
     }
 
     updateStats(); // Update the stats on each answer
-    generateQuestion();
+    document.getElementById('submit-answer').disabled = true; // Disable submit after the answer is submitted
+    generateQuestion(); // Generate a new question after submitting the answer
 }
 
 // Function to show the "Correct!" message
